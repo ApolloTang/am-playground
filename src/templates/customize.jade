@@ -1,0 +1,112 @@
+include ./maxin-formGroupInput.jade
+
+.container-top
+    .row
+        .col-sm-12
+            .full-width-centered
+                //all : name
+                +formGroupInput_2('name', 'Creative Name', true, 'text', 'all')
+
+.container-middle
+    .row
+        // .col-lg-5
+        //     .wrap-simulator-region.clearfix
+        //         .simulator-region
+        // .col-lg-7
+        .col-lg-1
+        .col-lg-4.visible-lg
+            div.simulator
+
+        .col-lg-6
+            .wrap-form.clearfix
+
+                include ./editor.jade
+
+                include ./assets.jade
+
+                //native : (Content)
+                .panel.panel-default(data-used-by='native' data-section='content')
+                    .panel-heading
+                        h5 Content
+                    .panel-body
+                        //native : title (Title)
+                        +formGroupInput('title', 'Ad Title', true, 'text', 'native')
+
+                        //native : text  (Content)
+                        +formGroupInput('text', ' Main Text', true, 'text', 'native')
+
+                        //native : call_to_action (Call To Action)
+                        +formGroupInput('call_to_action', 'Call To Action', false, 'text', 'native')
+
+                        //native : star_rating (Star Rating)
+                        +formGroupInput('star_rating', 'Star Rating', false, 'text', 'native')
+
+                //(Clickthrough)
+                .panel.panel-default
+                    .panel-heading
+                        h5 Clickthrough
+                    .panel-body
+                        .radio-collection
+                            .radio-wrap
+                                label(for='third_party_clickthrough_false')
+                                    input#third_party_clickthrough_false(type='radio', name='third_party_clickthrough', value='false', data-id='third_party_clickthrough')
+                                    strong I'm not using a third-party clicktracker.
+                                    br
+                                    span The banner links directly to the landing page.
+                                    br
+                                    span.disabled.btn.btn-default Creative
+                                    i.fa.fa-fw.fa-caret-right.text-muted
+                                    span.disabled.btn.btn-default Landing Page
+                            .radio-wrap
+                                label(for='third_party_clickthrough_true')
+                                    input#third_party_clickthrough_true(type='radio', name='third_party_clickthrough', value='true', data-id='third_party_clickthrough')
+                                    strong I'm using a third-party clicktracker.
+                                    br
+                                    span The banner links to a third-party adserver, which redirects the user to the landing page.
+                                    br
+                                    span.disabled.btn.btn-default Creative
+                                    i.fa.fa-fw.fa-caret-right.text-muted
+                                    span.disabled.btn.btn-default Clickthrough (3rd Party Clicktracker)
+                                    i.fa.fa-fw.fa-caret-right.text-muted
+                                    span.disabled.btn.btn-default Landing Page
+
+
+                        //common : clickghrough_url (Clickthrough URL)
+                        +formGroupInput('clickthrough_url', 'Clickthrough URL', true, 'text', 'all')
+
+                        //common : landing_page (Landing Page)
+                        +formGroupInput('landing_page', 'Landing Page', true, 'text', 'all')
+
+                //(Third Party Pixel)
+                .panel.panel-default.section-third-party-pixel
+                    .panel-heading
+                        .row
+                            .col-xs-8
+                                h5 Third Party Pixels
+                            .col-xs-4
+                                button( class='btn btn-default pull-right', data-action='add-pixel') +Add
+                    .panel-body.pixel-input-container
+                        .input-group-wrap.pixel-row
+                          .input-group
+                            input.form-control(data-id='third_party_pixels', name='third_party_pixels-0', type='text')
+                            span.input-group-addon(data-action='remove-pixel')
+                                span clear
+                    .pixel-template.hide
+                        .input-group-wrap.pixel-row
+                          .input-group
+                            input.form-control(data-id='third_party_pixels', type='text')
+                            span.input-group-addon(data-action='remove-pixel')
+                                span remove
+        .col-lg-1
+
+.container-bottom
+    .row
+        .col-sm-12
+            button(class='btn btn-link', data-action='cancel', type='button')
+                span Cancel
+            button(class='btn btn-success pull-right', data-action='save-and-audit', type='button')
+                i.fa.fa-floppy-o
+                span Save and Audit
+            button(class='btn btn-primary pull-right', data-action='save', type='button')
+                i.fa.fa-floppy-o
+                span Save

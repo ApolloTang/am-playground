@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>creative-builder-static</title>
+    <link rel="stylesheet" href="main-sass.css">
+    <link rel="stylesheet" href="main-less.css">
+  </head>
+  <body>
+    <div class="ef-creative-builder">
+      <div class="modal">
+        <div class="modal-dialog modal-size">
+          <div class="modal-content">
+            <!-- --------- cut here  ---------------------->
+            <!--<div id="modal-body">-->
+            <div class="header">
+              <button type="button" data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
+              <h4>
+                {{#if id}}
+                    Edit creative
+                {{else}}
+                    New creative
+                {{/if}}
+              </h4>
+            </div>
+            <div class="body">
+              <form class="form-horizontal">
+                <ul id="creative-tab" class="nav nav-tabs">
+                  <li class="active"><a data-target="#format">Format</a></li>
+                  <li><a data-target="#customize">Customize</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="format" class="tab-pane active">
+                    <div class="container-top">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="full-width-centered">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <div class="form-group-wrap clearfix">
+                                  <div class="form-group">
+                                    <label for="format" class="control-label"><span>Creative Format</span><i class="fa fa-asterisk text-danger"></i></label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="form-group-wrap clearfix">
+                                  <div class="form-group">
+                                    <select data-id="format" class="form-control"></select>
+                                    <div class="help-block"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="form-group-wrap clearfix">
+                                  <div class="form-group">
+                                    <select data-id="size" class="form-control"></select>
+                                    <div class="help-block"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container-middle">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="simulator-region-wrap clearfix">
+                            <div class="simulator-region"><img></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container-bottom">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <button data-action="cancel" type="button" class="btn btn-link"><span>Cancel</span></button>
+                          <button data-action="next" type="button" class="btn btn-success pull-right"><span>Next</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="customize" class="tab-pane">
+                    <div class="container-top">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="full-width-centered">
+                            <!--all : name-->
+                                                <div data-used-by="all" class="form-group-wrap clearfix">
+                                                  <div class="col-sm-3 standard-n-size-text"></div>
+                                                  <div class="thicker-on-narrow"></div>
+                                                  <div class="col-sm-9">
+                                                    <div class="form-group">
+                                                      <div class="row">
+                                                        <label for="name" class="col-sm-4 control-label"><span>Creative Name</span><i class="fa fa-asterisk text-danger"></i>
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                          <input id="name" name="name" data-id="name" type="text" class="form-control">
+                                                          <div class="help-block"></div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container-middle">
+                      <div class="row">
+                        <!-- .col-lg-5-->
+                        <!--     .wrap-simulator-region.clearfix-->
+                        <!--         .simulator-region-->
+                        <!-- .col-lg-7-->
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 visible-lg">
+                          <div class="simulator"></div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="wrap-form clearfix">
+                            <div data-use-by="mraid custom_html" data-section="html_editor" class="panel panel-default">
+                              <div class="panel-heading clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">HTML Markup</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                              </div>
+                              <div class="panel-body">
+                                <div>
+                                  <div class="form-group">
+                                    <label for="xx" class="col-sm-3 control-label"><span>Html Markup</span><i class="fa fa-asterisk text-danger"></i></label>
+                                    <div class="col-sm-9">
+                                      <div data-id="content_html" class="div"></div>
+                                      <div class="help-block col-sm-9"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- native : (Icon Image)-->
+                            <div data-used-by="native" data-assets-section="icon" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Icon Image</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-1-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-1a">Select asset</a></li>
+                                  <li><a data-target="#asset-1b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-1a" class="tab-pane active">
+                                  <div class="region-assets-helper-icon"></div>
+                                </div>
+                                <div id="asset-1b" class="tab-pane">
+                                  <!-- native: icon_image_asset (hidden)-->
+                                                              <div data-used-by="native" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="icon_image_asset" data-id="icon_image_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- native: icon_image_url (displayName: Icon Input URL)-->
+                                                              <div data-used-by="native" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="icon_image_url" class="col-sm-3 control-label"><span>Icon Input URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="icon_image_url" name="icon_image_url" data-id="icon_image_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- native: icon_image_preview_url (displayName: Icon Preview URL)-->
+                                                              <div data-used-by="native" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="icon_image_preview_url" class="col-sm-3 control-label"><span>Icon Preview URL</span>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="icon_image_preview_url" name="icon_image_preview_url" data-id="icon_image_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- native : (Main Image)-->
+                            <div data-used-by="native" data-assets-section="main_img" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Main Image</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-2-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-2a">Select Asset</a></li>
+                                  <li><a data-target="#asset-2b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-2a" class="tab-pane active">
+                                  <div class="region-assets-helper-main-img"></div>
+                                </div>
+                                <div id="asset-2b" class="tab-pane">
+                                  <!-- native: main_image_asset (hidden)-->
+                                                              <div data-used-by="native" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="main_image_asset" data-id="main_image_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- native: main_image_url (Main Image URL)-->
+                                                              <div data-used-by="native" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="main_image_url" class="col-sm-3 control-label"><span>Main Image URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="main_image_url" name="main_image_url" data-id="main_image_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- native: main_image_preview_url (Main Image Preview URL)-->
+                                                              <div data-used-by="native" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="main_image_preview_url" class="col-sm-3 control-label"><span>Main Image Preview URL</span>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="main_image_preview_url" name="main_image_preview_url" data-id="main_image_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- standard : (Banner)-->
+                            <div data-used-by="standard" data-assets-section="banner" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Banner</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-3-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-3a">Select asset</a></li>
+                                  <li><a data-target="#asset-3b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-3a" class="tab-pane active">
+                                  <div class="region-assets-helper-banner"></div>
+                                </div>
+                                <div id="asset-3b" class="tab-pane">
+                                  <!-- standard : image_asset (hidden)-->
+                                                              <div data-used-by="standard" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="image_asset" data-id="image_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- standard : image_url (Icon Input URL)-->
+                                                              <div data-used-by="standard" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="image_url" class="col-sm-3 control-label"><span>Banner URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="image_url" name="image_url" data-id="image_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- standard : image_preview_url (Icon Preview URL)-->
+                                                              <div data-used-by="standard" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="image_preview_url" class="col-sm-3 control-label"><span>Banner Preview URL</span>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="image_preview_url" name="image_preview_url" data-id="image_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- mriad content_html : (Reference Screenshot)-->
+                            <div data-used-by="mriad content_html" data-assets-section="reference_img" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Reference Image</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-4-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-4a">Select asset</a></li>
+                                  <li><a data-target="#asset-4b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-4a" class="tab-pane active">
+                                  <div class="region-assets-helper-reference-img"></div>
+                                </div>
+                                <div id="asset-4b" class="tab-pane">
+                                  <!-- mriad content_html : image_asset (hidden)-->
+                                                              <div data-used-by="mriad content_html" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="reference_image_asset" data-id="reference_image_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- mriad content_html : icon_image_preview_url (Icon Preview URL)-->
+                                                              <div data-used-by="mriad content_html" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="reference_image_preview_url" class="col-sm-3 control-label"><span>Reference Screenshot</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="reference_image_preview_url" name="reference_image_preview_url" data-id="reference_image_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- video : (Video)-->
+                            <div data-used-by="video" data-assets-section="video" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Video</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-5-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-5a">Select asset</a></li>
+                                  <li><a data-target="#asset-5b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-5a" class="tab-pane active">
+                                  <div class="region-assets-helper-video"></div>
+                                </div>
+                                <div id="asset-5b" class="tab-pane">
+                                  <!-- video : video_asset (hidden)-->
+                                                              <div data-used-by="video" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="video_asset" data-id="video_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- video : video_url (video URL)-->
+                                                              <div data-used-by="video" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="video_url" class="col-sm-3 control-label"><span>Video URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="video_url" name="video_url" data-id="video_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- video : video_preview_url (Video Preview URL)-->
+                                                              <div data-used-by="video" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="video_preview_url" class="col-sm-3 control-label"><span>Video Preview URL</span>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="video_preview_url" name="video_preview_url" data-id="video_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- video: image_preview_url (Reference Screenshot)-->
+                                                              <div data-used-by="video" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="image_preview_url" class="col-sm-3 control-label"><span>Reference Screenshot</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="image_preview_url" name="image_preview_url" data-id="image_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- video: video_duration (Duration)-->
+                                                              <div data-used-by="video" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="video_duration" class="col-sm-3 control-label"><span>Duration</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="video_duration" name="video_duration" data-id="video_duration" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- video : (Companion Ad)-->
+                            <div data-used-by="video" data-assets-section="companion_ad" class="asset-wrap">
+                              <div class="asset-wrap-header clearfix">
+                                <div class="asset-wrap-header-text-container">
+                                  <div class="asset-wrap-header-title">Companion Ad</div>
+                                  <div class="asset-wrap-header-asset-size"></div>
+                                </div>
+                                <ul id="asset-6-tab" class="nav nav-tabs asset-wrap-header-tabs">
+                                  <li class="active"><a data-target="#asset-6a">Select asset</a></li>
+                                  <li><a data-target="#asset-6b">Input by URL</a></li>
+                                </ul>
+                              </div>
+                              <div class="tab-content">
+                                <div id="asset-6a" class="tab-pane active">
+                                  <div class="region-assets-helper-companion-ad"></div>
+                                </div>
+                                <div id="asset-6b" class="tab-pane">
+                                  <!-- video : companion_asset (hidden)-->
+                                                              <div data-used-by="videoCompanion" style="display: none">
+                                                                <div class="form-group">
+                                                                  <input id="companion_asset" data-id="companion_asset" type="hidden">
+                                                                </div>
+                                                              </div>
+                                  <!-- video : companion_url (Companion Banner URL)-->
+                                                              <div data-used-by="videoCompanion" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="companion_url" class="col-sm-3 control-label"><span>Companion Banner URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="companion_url" name="companion_url" data-id="companion_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                  <!-- video : companion_preview_url (Companion Banner Preview URL)-->
+                                                              <div data-used-by="videoCompanion" class="form-group-wrap clearfix">
+                                                                <div class="form-group">
+                                                                  <label for="companion_preview_url" class="col-sm-3 control-label"><span>Companion Banner Preview URL</span>
+                                                                  </label>
+                                                                  <div class="col-sm-9">
+                                                                    <input id="companion_preview_url" name="companion_preview_url" data-id="companion_preview_url" type="text" class="form-control">
+                                                                    <div class="help-block"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!--native : (Content)-->
+                            <div data-used-by="native" data-section="content" class="panel panel-default">
+                              <div class="panel-heading">
+                                <h5>Content</h5>
+                              </div>
+                              <div class="panel-body">
+                                <!--native : title (Title)-->
+                                                            <div data-used-by="native" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="title" class="col-sm-3 control-label"><span>Ad Title</span><i class="fa fa-asterisk text-danger"></i>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="title" name="title" data-id="title" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                <!--native : text  (Content)-->
+                                                            <div data-used-by="native" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="text" class="col-sm-3 control-label"><span> Main Text</span><i class="fa fa-asterisk text-danger"></i>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="text" name="text" data-id="text" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                <!--native : call_to_action (Call To Action)-->
+                                                            <div data-used-by="native" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="call_to_action" class="col-sm-3 control-label"><span>Call To Action</span>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="call_to_action" name="call_to_action" data-id="call_to_action" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                <!--native : star_rating (Star Rating)-->
+                                                            <div data-used-by="native" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="star_rating" class="col-sm-3 control-label"><span>Star Rating</span>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="star_rating" name="star_rating" data-id="star_rating" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                              </div>
+                            </div>
+                            <!--(Clickthrough)-->
+                            <div class="panel panel-default">
+                              <div class="panel-heading">
+                                <h5>Clickthrough</h5>
+                              </div>
+                              <div class="panel-body">
+                                <div class="radio-collection">
+                                  <div class="radio-wrap">
+                                    <label for="third_party_clickthrough_false">
+                                      <input id="third_party_clickthrough_false" type="radio" name="third_party_clickthrough" value="false" data-id="third_party_clickthrough"><strong>I'm not using a third-party clicktracker.</strong><br><span>The banner links directly to the landing page.</span><br><span class="disabled btn btn-default">Creative</span><i class="fa fa-fw fa-caret-right text-muted"></i><span class="disabled btn btn-default">Landing Page</span>
+                                    </label>
+                                  </div>
+                                  <div class="radio-wrap">
+                                    <label for="third_party_clickthrough_true">
+                                      <input id="third_party_clickthrough_true" type="radio" name="third_party_clickthrough" value="true" data-id="third_party_clickthrough"><strong>I'm using a third-party clicktracker.</strong><br><span>The banner links to a third-party adserver, which redirects the user to the landing page.</span><br><span class="disabled btn btn-default">Creative</span><i class="fa fa-fw fa-caret-right text-muted"></i><span class="disabled btn btn-default">Clickthrough (3rd Party Clicktracker)</span><i class="fa fa-fw fa-caret-right text-muted"></i><span class="disabled btn btn-default">Landing Page</span>
+                                    </label>
+                                  </div>
+                                </div>
+                                <!--common : clickghrough_url (Clickthrough URL)-->
+                                                            <div data-used-by="all" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="clickthrough_url" class="col-sm-3 control-label"><span>Clickthrough URL</span><i class="fa fa-asterisk text-danger"></i>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="clickthrough_url" name="clickthrough_url" data-id="clickthrough_url" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                <!--common : landing_page (Landing Page)-->
+                                                            <div data-used-by="all" class="form-group-wrap clearfix">
+                                                              <div class="form-group">
+                                                                <label for="landing_page" class="col-sm-3 control-label"><span>Landing Page</span><i class="fa fa-asterisk text-danger"></i>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                  <input id="landing_page" name="landing_page" data-id="landing_page" type="text" class="form-control">
+                                                                  <div class="help-block"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                              </div>
+                            </div>
+                            <!--(Third Party Pixel)-->
+                            <div class="panel panel-default section-third-party-pixel">
+                              <div class="panel-heading">
+                                <div class="row">
+                                  <div class="col-xs-8">
+                                    <h5>Third Party Pixels</h5>
+                                  </div>
+                                  <div class="col-xs-4">
+                                    <button data-action="add-pixel" class="btn btn-default pull-right">+Add</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="panel-body pixel-input-container">
+                                <div class="input-group-wrap pixel-row">
+                                  <div class="input-group">
+                                    <input data-id="third_party_pixels" name="third_party_pixels-0" type="text" class="form-control"><span data-action="remove-pixel" class="input-group-addon"><span>clear</span></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="pixel-template hide">
+                                <div class="input-group-wrap pixel-row">
+                                  <div class="input-group">
+                                    <input data-id="third_party_pixels" type="text" class="form-control"><span data-action="remove-pixel" class="input-group-addon"><span>remove</span></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-1"></div>
+                      </div>
+                    </div>
+                    <div class="container-bottom">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <button data-action="cancel" type="button" class="btn btn-link"><span>Cancel</span></button>
+                          <button data-action="save-and-audit" type="button" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i><span>Save and Audit</span></button>
+                          <button data-action="save" type="button" class="btn btn-primary pull-right"><i class="fa fa-floppy-o"></i><span>Save</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--</div>-->
+            <!-- ----------------- cut here  ---------------------->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

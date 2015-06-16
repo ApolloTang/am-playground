@@ -1,0 +1,38 @@
+
+
+mixin formGroupInput(dataId, displayName, required, type, useBy)
+    div( class='form-group-wrap clearfix' data-used-by='#{useBy}')
+        .form-group
+            label( for='#{dataId}' class='col-sm-3 control-label')
+                span #{displayName}
+                if (required === true )
+                    i.fa.fa-asterisk.text-danger
+            .col-sm-9
+                input( id='#{dataId}' name='#{dataId}' data-id='#{dataId}', type='#{type}' class='form-control')
+                .help-block
+
+
+mixin formGroupInput_2(dataId, displayName, required, type, useBy)
+    div( class='form-group-wrap clearfix' data-used-by='#{useBy}')
+        .col-sm-3.standard-n-size-text
+        .thicker-on-narrow
+        div.col-sm-9
+            .form-group
+                .row
+                    label( for='#{dataId}' class='col-sm-4 control-label')
+                        span #{displayName}
+                        if (required === true )
+                            i.fa.fa-asterisk.text-danger
+                    .col-sm-8
+                        input( id='#{dataId}' name='#{dataId}' data-id='#{dataId}', type='#{type}' class='form-control')
+                        .help-block
+
+mixin formGroupInputHidden(dataId, required, useBy)
+    div( data-used-by='#{useBy}' style='display: none')
+        .form-group
+            input( id='#{dataId}' data-id='#{dataId}', type='hidden')
+//-    // debug: use to revieal hidden field
+//-    div( data-used-by='#{useBy}' style='')
+//-        .form-group
+//-            input( id='#{dataId}' data-id='#{dataId}', type='text')
+
