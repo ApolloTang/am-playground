@@ -15,6 +15,10 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     rename = require('gulp-rename');
 
+require('shelljs/global');
+
+echo('shelljs is install');
+
 var outputDir = 'builds/development';
 
 console.log ('argv: ', argv);
@@ -38,9 +42,18 @@ gulp.task('initialize', function(cb) {
 
     console.log('doneInit', doneInit );
     if (!doneInit) {
-        // var interval = setInterval(function() {
-            console.log('initialize');
-        // }, 100)
+        echo('initializing ... ');
+        echo('clearing build folder ... ');
+        rm('-rf', outputDir);
+        if (test('-d', outputDir)) {
+            echo('copying content of static folder to: '+outputDir);
+            cp('-R', 'src/statics/*', outputDir);
+        } else {
+            echo('copying content of static folder to: '+outputDir);
+            mkdir('-p', outputDir);
+            echo('copying static folder: '+outputDir);
+            cp('-R', 'src/statics/*', outputDir);
+        }
         doneInit = true;
 
         // setTimeout(function(){
@@ -151,11 +164,17 @@ gulp.task('less', ['before'],  function(){
     .pipe(connect.reload());
 });
 
+
+gulp.task('onStaticFolderChange', ['before'],  function(){
+    echo('Static Folder Changed');
+});
+
 gulp.task('watch', ['before'], function(){
     gulp.watch('src/templates/**/*.jade', ['jade']);
     gulp.watch('src/js/**/*.js', ['js']);
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/less/**/*.less', ['less']);
+    gulp.watch('src/statics/**/*', ['onStaticFolderChange']);
 })
 
 gulp.task('connect', ['before'], function(){
