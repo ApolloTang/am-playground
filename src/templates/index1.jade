@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title creative-builder-static
+    link(rel="stylesheet", href="main-sass.css")
+    link(rel="stylesheet", href="main-less.css")
+  body
+    .ef-creative-builder
+        .modal
+            .modal-dialog.modal-size
+                .modal-content
+                    // --------- cut here  --------------------
+                    //<div id="modal-body">
+                    .header
+                        button( type='button', class='close', data-dismiss='modal', aria-label='close')
+                            span( aria-hidden='true') &times;
+                        h4
+                            | {{#if id}}
+                            |     Edit creative
+                            | {{else}}
+                            |     New creative
+                            | {{/if}}
+                    .body
+                        form.form-horizontal
+                            ul.nav.nav-tabs#creative-tab
+                                li.active
+                                    a(data-target='#format' ) Format
+                                li
+                                    a(data-target='#customize' ) Customize
+                            .tab-content
+                                .tab-pane.active#format
+                                    include ./index1/_format.jade
+                                .tab-pane#customize
+                                    include ./index1/_customize.jade
+                    //</div>
+                    // ----------------- cut here  --------------------
+    script(src="app.js")
+

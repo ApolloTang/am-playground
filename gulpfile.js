@@ -91,7 +91,7 @@ gulp.task('before', ['initialize'], function(cb) {
 
 
 gulp.task('jade', ['before'], function(){
-    return gulp.src('src/templates/index.jade')
+    return gulp.src('src/templates/**/[^_]*.jade')
     .pipe(jade({pretty: true}))
     .pipe(gulp.dest(outputDir))
     .pipe(connect.reload());
